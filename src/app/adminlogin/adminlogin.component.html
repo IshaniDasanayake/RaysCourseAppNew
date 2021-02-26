@@ -1,0 +1,32 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div *ngIf="isLogged; else elseBlock">
+  <app-titlebar></app-titlebar>
+</div>
+<ng-template #elseBlock>
+  <app-logged-header></app-logged-header>
+</ng-template>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="assets\login.png"  style="width:6rem" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form (ngSubmit)="onSubmit(loginForm.value)" [formGroup]="loginForm" autocomplete="off">
+      <input type="text" value="Admin" formControlName="name"  id="login" class="fadeIn second" placeholder="Admin" name="login" readonly class="form-control-plaintext">
+      <input type="password" formControlName="password" class="form-control" id="password" class="fadeIn third" name="login" placeholder="password">
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+    </div>
+
+  </div>
+</div>

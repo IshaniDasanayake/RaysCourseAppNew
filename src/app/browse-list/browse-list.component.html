@@ -1,0 +1,161 @@
+<div class="container">
+  <div class="row">
+    <div id="side" class="col-lg-3 d-flex align-items-stretch" style="background-color: #110a47; min-height: 30rem">
+      <div clas="card">
+        <div class="card-body">
+          <input *ngIf="isLogged" type="image" src="assets\plus.png" style="width: 2rem; height: 2rem;" data-toggle="modal"
+                 data-target="#exampleModal">
+
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+               aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+
+                <div class="modal-body">
+                  <form [formGroup]="typeForm" autocomplete="off" novalidate
+                        (ngSubmit)="onSubmit(typeForm.value)">
+                    <div class="form-group">
+                      <label for="type" class="col-form-label">Course Type</label>
+                      <input type="text" class="form-control" id="type" formControlName="type">
+                    </div>
+                    <div class="form-group">
+                      <label for="message-text" class="col-form-label">Description</label>
+                      <textarea class="form-control" id="message-text" formControlName="description"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Insert</button>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="form-check" >
+
+            <div class="container">
+              <div class="row" style="line-height: 2; margin-top: 3rem;">
+              <div class="col-1">
+                <input class="form-check-input" type="checkbox" value="x" checked>
+              </div>
+              <div class="col-9">
+                <label class="form-check-label" for="flexCheckChecked">
+                  All
+                </label>
+              </div>
+              </div>
+              <div class="row" *ngFor="let i of types">
+                <div class="col-1">
+                  <input class="form-check-input" type="checkbox" value="x" id="flexCheckChecked"
+                         (change)="changeS($event,i.type_id)">
+                </div>
+                <div class="col-8" style="line-height: 2;">
+                  <label class="form-check-label" for="flexCheckChecked">
+                    {{i.type_name}}
+                  </label>
+                </div>
+                <div class="col-1" >
+
+                  <input *ngIf="isLogged" type="image" style="width: 1rem ; height: 1rem" src="assets\remove.png"
+                         (click)="deleteType(i.type_id)">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngIf="change; else elseBlock" class="col-lg-9"  >
+      <div >
+      <div class="card" style="width: 50rem;" *ngFor="let j of courses">
+
+          <div class="card-body" >
+
+            <div class="container">
+              <input type="image" style="width: 1rem ; height: 1rem; float: right" src="assets\remove.png"
+                     (click)="delete(j.cs_id)" *ngIf="isLogged">
+
+              <div class="row" >
+
+                <h2 class="card-title">{{j.cs_title}}</h2>
+
+              </div>
+              <div class="row">
+                <div class="card-text">{{j.cs_description}}</div>
+              </div>
+              <div class="row">
+
+                <div class="card-text col-4">
+                  <img src="assets\duration.png" style="width:1.5rem" >
+
+                  <b> {{j.cs_duration}}</b></div>
+
+                <div class="card-text col-4">
+                  <img src="assets\building.png" style="width:1.5rem" >
+
+                  <b>{{j.cs_institute}}</b></div>
+                <div class="card-text col-4">
+                  <img src="assets\levels.png" style="width:1.5rem" >
+
+                  <b>{{j.cs_level}}</b></div>
+
+              </div>
+              <button style="margin-left: 50%" class="btn btn btn-link" (click)="routeTo(j.cs_id,j)">More</button>
+              <button class="btn-sm btn btn-link" style="float: right" (click)="update(j.cs_id,j)" *ngIf="isLogged">Update</button>
+
+
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+<ng-template #elseBlock>
+  <div class="col-lg-9">
+  <div class="card" style="width: 50rem;" *ngFor="let j of allCourses" >
+
+    <div class="card-body" >
+
+      <div class="container">
+        <input type="image" style="width: 1rem ; height: 1rem; float: right" src="assets\remove.png"
+               (click)="delete(j.cs_id)" *ngIf="isLogged">
+        <div class="row" >
+
+          <h2 class="card-title">{{j.cs_title}}</h2>
+
+        </div>
+        <div class="row">
+          <div class="card-text">{{j.cs_description}}</div>
+        </div>
+        <div class="row" style="margin-top: 1rem">
+
+          <div class="card-text col-4">
+            <img src="assets\duration.png" style="width:1.5rem" >
+            <b>{{j.cs_duration}}</b>
+          </div>
+
+          <div class="card-text col-4">
+            <img src="assets\building.png" style="width:1.5rem" >
+
+            <b>{{j.cs_institute}}</b></div>
+          <div class="card-text col-4">
+            <img src="assets\levels.png" style="width:1.5rem" >
+
+            <b> {{j.cs_level}}</b></div>
+
+        </div>
+        <button style="margin-left: 50%" class="btn-sm btn btn-link" (click)="routeTo(j.cs_id,j)">More</button>
+        <button class="btn-sm btn btn-link" style="float: right" (click)="update(j.cs_id,j)" *ngIf="isLogged">Update</button>
+
+
+      </div>
+    </div>
+  </div>
+  </div>
+</ng-template>
+
+  </div>
+</div>
+
+

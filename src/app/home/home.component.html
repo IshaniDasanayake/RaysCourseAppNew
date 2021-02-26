@@ -1,0 +1,28 @@
+<div *ngIf="isLogged; else elseBlock">
+  <app-titlebar></app-titlebar>
+</div>
+<ng-template #elseBlock>
+  <app-logged-header></app-logged-header>
+
+</ng-template>
+
+<div class="card mb-3" style="max-width: 100%;">
+  <div class="row g-0">
+    <div class="col-md-5">
+      <img style="max-width:100%;height:auto" src="assets\rightt.jpg" alt="...">
+    </div>
+    <div class="col-md-7" style="background-color:#060d30; color: white">
+      <div class="card-body">
+        <h1  class="card-title">Dream Up</h1>
+        <div id="p" class="card-text" >
+          Gaining IT certifications will validate your skills and advance your career.
+          Our online courses will prepare you for top IT certifications, from vendors
+          like CompTIA, Cisco, Microsoft, VMware and more. Stay on top of your game and boost
+          your credentials with the best IT certification courses in the industry.
+        </div>
+        <button class="btn btn-warning" (click)="routeTo()"><b>Browse Courses</b></button>
+      </div>
+    </div>
+  </div>
+</div>
+

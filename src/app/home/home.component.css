@@ -1,0 +1,19 @@
+div#p {
+  font: 20px Arial;
+  line-height: 1.7;
+  margin-top: 2rem;
+margin-left: 8%;
+  margin-right: 8%;
+  display: flex;
+}
+
+h1{
+  margin-left: 6%;
+  font: 50px Khmer UI;
+}
+
+button{
+  margin-top: 5rem;
+  margin-left: 50%;
+  font-family: Calibri;
+}

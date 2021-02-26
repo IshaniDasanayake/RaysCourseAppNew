@@ -1,0 +1,23 @@
+
+<!--<div class="">-->
+<div *ngIf="isLogged; else elseBlock">
+  <app-titlebar></app-titlebar>
+</div>
+<ng-template #elseBlock>
+  <app-logged-header></app-logged-header>
+</ng-template>
+<app-browse-list (found)="handleResults($event)"></app-browse-list>
+
+<!--</div>-->
+<!--<table>-->
+<!--  <tr>-->
+<!--    <td>-->
+<!--      <app-browse-list></app-browse-list>-->
+
+<!--    </td>-->
+<!--    <td>-->
+<!--      <app-browse-view></app-browse-view>-->
+
+<!--    </td>-->
+<!--  </tr>-->
+<!--</table>-->

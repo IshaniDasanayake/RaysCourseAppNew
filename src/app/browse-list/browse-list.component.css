@@ -1,0 +1,11 @@
+table {border: none;}
+tr , th , td  {
+  border: 0px ;
+  padding: 5%;
+  text-align: center;
+}
+
+div#side{
+  color: white;
+  font: 17px "Calibri Light";
+}

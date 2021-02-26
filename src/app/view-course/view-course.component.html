@@ -1,0 +1,103 @@
+<div *ngIf="isLogged; else elseBlock">
+  <app-titlebar></app-titlebar>
+</div>
+<ng-template #elseBlock>
+  <app-logged-header></app-logged-header>
+</ng-template>
+<div class="container" style="background-color: white;height: 110%">
+  <div class="row" style="line-height: 1.7;">
+    <h1>{{courseDetails.cs_title}}</h1>
+    <button class="btn btn-link" *ngIf="isLogged" (click)="update()">Update</button>
+    <div class="col d-flex align-items-stretch">
+<div class="card" style="width: 40rem; margin-top: 1rem; margin-bottom: 1rem" >
+  <table class="table table-striped" >
+    <tbody>
+    <tr>
+      <th>Title</th>
+      <td>{{courseDetails.cs_title}}</td>
+    </tr>
+    <tr>
+      <th>Course Duration</th>
+      <td>{{courseDetails.cs_duration}}</td>
+    </tr>
+    <tr>
+      <th>Institute</th>
+      <td>{{courseDetails.cs_institute}}</td>
+    </tr>
+    <tr>
+
+      <th>Difficulty Level</th>
+      <td>{{courseDetails.cs_level}}</td>
+    </tr>
+    <tr>
+      <th>Course Language</th>
+      <td>{{courseDetails.cs_language}}</td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+    </div>
+
+    <div class="col" style="background-color: #a7aabc">
+     <h1> Course Description</h1>
+      <p>{{courseDetails.cs_description}}</p>
+      <div *ngIf="isEnrolled; else elseButton">
+        <button type="button" class="btn btn-primary btn-sm"  data-toggle="modal"
+                data-target="#exampleModal" >Enrolled</button>
+      </div>
+
+<ng-template #elseButton>
+  <button type="button" class="btn btn-warning btn-sm"  data-toggle="modal"
+          data-target="#exampleModal" style="margin-left: 40%"><b>Enrol Me</b></button>
+</ng-template>
+
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+        <div class="modal-body">
+          <form [formGroup]="registerForm" autocomplete="off" novalidate
+                (ngSubmit)="onSubmit(registerForm.value)">
+            <div class="form-group">
+              <label for="email" class="col-form-label">Email</label>
+              <input type="email" class="form-control" id="email" formControlName="email">
+            </div>
+            <div class="form-group">
+              <label for="name" class="col-form-label">Name</label>
+              <input type="text" class="form-control" id="name" formControlName="name">
+            </div>
+            <div class="form-group">
+              <label for="ins" class="col-form-label">University / Collage</label>
+              <input type="text" class="form-control" id="ins" formControlName="institute">
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="row" style=" margin-top: 1rem; margin-left: 1rem">
+    <div class="col-5" style="background-color: #989692;  ">
+    <h2> Course Content</h2>
+    <p>{{courseDetails.cs_content}}</p>
+    </div>
+
+    <div class="col-6" >
+      <h2> Skills You'll Gain</h2>
+      {{courseDetails.cs_skills}}
+
+    </div>
+  </div>
+
+</div>
+

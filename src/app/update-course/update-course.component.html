@@ -1,0 +1,94 @@
+<div *ngIf="isLogged; else elseBlock2">
+  <app-titlebar></app-titlebar>
+</div>
+<ng-template #elseBlock2>
+  <app-logged-header></app-logged-header>
+</ng-template>
+<div style="margin-left: 9rem; margin-right: 9rem" >
+  <div *ngIf="isInserted" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Successfully Inserted</strong> You should check in on some of those fields below.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form [formGroup]="updateCourseForm" autocomplete="off" novalidate
+        (ngSubmit)="updateCourse(updateCourseForm.value)">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="title">Course Title</label>
+        <input type="text" class="form-control" formControlName="title" id="title" placeholder="Information Technology">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="duration">Course Duration</label>
+        <input type="text" class="form-control" formControlName="duration" id="duration" placeholder="5 hrs">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="institute">Institute</label>
+      <input type="text" class="form-control" formControlName="institute" id="institute" placeholder="1234 Main St">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="level">Level</label>
+        <div class="dropdown">
+          <button style="width: 10rem" class="btn btn-light  dropdown-toggle" type="button" id="level"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <span *ngIf="isSelectLevel; else elseBlock">
+            {{selectedLevel}}
+          </span>
+            <ng-template #elseBlock>
+              <span>{{newSelectedLevel}}</span>
+            </ng-template>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="level">
+            <button type="button" class="dropdown-item" (click)="difficultLevel('Basic')"> Basic</button>
+            <button type="button" class="dropdown-item" (click)="difficultLevel('Intermidiate')"> Intermidiate</button>
+            <button type="button" class="dropdown-item" (click)="difficultLevel('Advanced')"> Advanced</button>
+
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="type">Course Type</label>
+
+        <div class="dropdown">
+          <button style="width: 10rem" class="btn btn-light  dropdown-toggle" type="button" id="type"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span *ngIf="isSelect; else elseBlock">
+            {{selectedType}}
+          </span>
+            <ng-template #elseBlock>
+              <span>{{newSelectedType}}</span>
+            </ng-template>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="type">
+            <button type="button" class="dropdown-item" (click)="courseType(j.type_id,j.type_name)"
+                    *ngFor="let j of courseTypes">{{j.type_name}}</button>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-5">
+        <label for="language">Language</label>
+        <input type="text" class="form-control" id="language" formControlName="language">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description">Course Description</label>
+      <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="content">Course Content</label>
+      <textarea class="form-control" id="content" rows="4" formControlName="content"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="skills">Skills will gain</label>
+      <textarea class="form-control" id="skills" rows="5" formControlName="skills"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>
