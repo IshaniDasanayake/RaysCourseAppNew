@@ -24,5 +24,5 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 - Develop the Login module
 - Add proper authentication and authorisation michanism using JWT (login module)
 - Handle the student registrations properly
-- Implement unit testing ( jest)
+- Implement unit testing
 
