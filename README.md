@@ -26,3 +26,5 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 - Handle the student registrations properly
 - Implement unit testing
 
+## Summery Documentation
+https://drive.google.com/file/d/11brZoIKYztb8GPAUSLv0ZwuupyrSlIqp/view?usp=sharing
