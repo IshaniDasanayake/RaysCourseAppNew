@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.2.
 
-# Getting Started
+## Getting Started
 Installs all the dependencies for the project.
 
 `npm install`
